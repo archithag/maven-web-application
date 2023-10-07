@@ -1,4 +1,5 @@
 node {
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
     def meavenhome = tool name: "maven3.9.4"
     stage('Checkoutcode'){
         git branch: 'development', credentialsId: '3204d058-9ed5-4ca4-a2e7-7215ecd36cdb', url: 'https://github.com/archithag/maven-web-application.git'
